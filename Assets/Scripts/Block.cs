@@ -8,7 +8,6 @@ public class Block : MonoBehaviour
     // params
     [SerializeField] AudioClip breakSound;
     [SerializeField] GameObject blockSparklesVFX;
-    [SerializeField] int maxHits;
     [SerializeField] Sprite[] hitSprites;
 
     // cached reference
@@ -16,6 +15,7 @@ public class Block : MonoBehaviour
 
     // state varaibles
     [SerializeField] int timesHit; // TODO only serialize for debug
+    [SerializeField] int maxHits; // TODO only serialize for debug
     private void Start()
     {
         CountBreakableBlocks();
@@ -42,6 +42,7 @@ public class Block : MonoBehaviour
     private void HandleHit()
     {
         timesHit++;
+        int maxHits = hitSprites.Length + 1;
         if (timesHit >= maxHits)
         {
             DestroyBlock();
@@ -55,7 +56,14 @@ public class Block : MonoBehaviour
     private void ShowNextHitSprite()
     {
         int spriteIndex = timesHit - 1;
-        GetComponent<SpriteRenderer>().sprite = hitSprites[spriteIndex];
+        if (hitSprites[spriteIndex] != null)
+        {
+            GetComponent<SpriteRenderer>().sprite = hitSprites[spriteIndex];
+        }
+        else
+        {
+            Debug.LogError("Block sprite is missing from array" + gameObject.name);
+        }
     }
 
     private void DestroyBlock()
