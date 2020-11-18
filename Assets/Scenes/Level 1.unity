@@ -128,6 +128,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 665988963}
     m_Modifications:
+    - target: {fileID: 7344666550669089857, guid: 2f10d132d5bf31a4d85c98a2fab50d84,
+        type: 3}
+      propertyPath: maxHits
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7344666550669089861, guid: 2f10d132d5bf31a4d85c98a2fab50d84,
         type: 3}
       propertyPath: m_Name
@@ -234,7 +239,7 @@ Transform:
   m_Children:
   - {fileID: 740234939}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &740234939 stripped
 Transform:
